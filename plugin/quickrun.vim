@@ -32,7 +32,7 @@ function! QuickRun()
 endfunction
 
 function! QuickRunWithType(args1)
-    let file_type = args1
+    let file_type = a:args1
     " echo file_type
     if has_key(g:quickrun_known_file_types, file_type)
         let qr_command = join(g:quickrun_known_file_types[file_type], '&&')
