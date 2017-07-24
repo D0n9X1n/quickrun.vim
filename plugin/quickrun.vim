@@ -12,7 +12,7 @@ if !exists('g:quickrun_known_file_types')
                 \"php": ["!php %"],
                 \"vim": ["source %"],
                 \"py": ["!python %"],
-                \}
+            \}
 endif
 
 function! QuickRun()
