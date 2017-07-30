@@ -7,11 +7,13 @@
 
 if !exists('g:quickrun_known_file_types')
     let g:quickrun_known_file_types = {
-                \"cpp": ["!g++ %", "./a.out"],
-                \"c": ["!g++ %", "./a.out"],
+                \"cpp": ["!g++ -g %", "lldb ./a.out"],
+                \"c": ["!g++ -g %", "./a.out"],
                 \"php": ["!php %"],
                 \"vim": ["source %"],
                 \"py": ["!python %"],
+                \"git": ["!git add.", "git commit -am '%'", "git push origin master"],
+                \"md": ["MarkdownPreview github"],
             \}
 endif
 
