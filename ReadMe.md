@@ -43,6 +43,17 @@ Here we use `%` to represent the file you currently edit.
 
 This configuration you can write in your **vimrc file**.
 
+### Usage
+1. Auto detect the filetype.
+> + When you editing your file, You can run `:QuickRun` to run your current file.
+> + If you are editting *main.c* file, the command will be `:!gcc main.c && ./a.out`.
+
+2. Run with spec filetype.
+> + When you editing your file, you can run `:QuickRunWithType go` to run your current file.
+> + If you are editting *main.md*, the command will be `:!go test` to test the whole go project.
+
+3. You can bind your key with `nnoremap <F5> :QuickRun<cr>` to enjoy the plugin.
+
 ### License
 See [@LICENSE](./LICENSE)
 

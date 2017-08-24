@@ -1,6 +1,6 @@
 """""""""""""""""""""""
 " quickrun.vim
-" version: v0.0.1
+" version: v0.0.2
 " author: Dongxin Tang
 " mail: mike@mikecoder.cn
 """""""""""""""""""""""
@@ -19,7 +19,6 @@ endif
 
 function! QuickRun()
     let current_file = expand("%")
-
     if !empty(current_file)
         let file_types = split(current_file, "\\.")
         if len(file_types) > 1
