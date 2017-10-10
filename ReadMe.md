@@ -1,7 +1,8 @@
 quickrun.vim
 ---
 
-[![GitHub version](https://badge.fury.io/gh/MikeCoder%2Fquickrun.vim.svg)](https://badge.fury.io/gh/MikeCoder%2Fquickrun.vim)
+![version](https://img.shields.io/badge/version-v0.0.2-green.svg?style=plastic)
+![license](https://img.shields.io/github/license/mashape/apistatus.svg?style=plastic)
 
 Yet, just another quickrun plugin for vim.
 
