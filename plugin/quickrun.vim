@@ -1,17 +1,17 @@
 """""""""""""""""""""""
 " quickrun.vim
-" version: v0.0.2
+" version: v0.0.3
 " author: Dongxin Tang
 " mail: mike@mikecoder.cn
 """""""""""""""""""""""
 
 if !exists('g:quickrun_known_file_types')
     let g:quickrun_known_file_types = {
-                \"cpp": ["!g++ -g %", "lldb ./a.out"],
-                \"c": ["!g++ -g %", "./a.out"],
-                \"php": ["!php %"],
-                \"vim": ["source %"],
-                \"py": ["!python %"],
+                \"cpp": ["!g++ -g \"%\"", "lldb ./a.out"],
+                \"c": ["!g++ -g \"%\"", "./a.out"],
+                \"php": ["!php \"%\""],
+                \"vim": ["source \"%\""],
+                \"py": ["!python \"%\""],
                 \"git": ["!git add.", "git commit -am '%'", "git push origin master"],
                 \"md": ["MarkdownPreview github"],
             \}
