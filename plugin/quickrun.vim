@@ -18,16 +18,12 @@ if !exists('g:quickrun_known_file_types')
 endif
 
 function! QuickRun()
-    let current_file = expand("%")
-    if !empty(current_file)
-        let file_types = split(current_file, "\\.")
-        if len(file_types) > 1
-            let file_type = file_types[-1]
-            " echo file_type
-            if has_key(g:quickrun_known_file_types, file_type)
-                let qr_command = join(g:quickrun_known_file_types[file_type], '&&')
-                execute qr_command
-            endif
+    let file_type = expand("%:e")
+    if !empty(file_type)
+        " echo file_type
+        if has_key(g:quickrun_configs, file_type)
+            let qr_command = join(g:quickrun_configs[file_type], '&&')
+            execute qr_command
         endif
     endif
 endfunction
