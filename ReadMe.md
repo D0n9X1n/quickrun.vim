@@ -59,7 +59,7 @@ This configuration you can write in your **vimrc file**.
 
 If you installed another plugin [asyncrun](https://github.com/skywind3000/asyncrun.vim), then you can also use `:QuickRunAsync` without changing any configs.
 
-Notice that `:QuickRunAsync` will invode `:AsyncRun` for you, it is **only** used for outter command such as `!python foo.py`.
+Notice that `:QuickRunAsync` will invode `:AsyncRun` for you, it is **only** used for system commands such as `!python foo.py`.
 
 ### License
 See [@LICENSE](./LICENSE)
