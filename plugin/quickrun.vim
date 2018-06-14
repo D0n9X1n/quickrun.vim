@@ -5,42 +5,39 @@
 " mail: mike@mikecoder.cn
 """""""""""""""""""""""
 
-if !exists('g:quickrun_known_file_types')
-    let g:quickrun_known_file_types = {
-                \"cpp": ["!g++ -g \"%\"", "lldb ./a.out"],
-                \"c": ["!g++ -g \"%\"", "./a.out"],
-                \"php": ["!php \"%\""],
-                \"vim": ["source \"%\""],
-                \"py": ["!python \"%\""],
-                \"git": ["!git add.", "git commit -am '%'", "git push origin master"],
-                \"md": ["MarkdownPreview github"],
-            \}
+if !exists("g:quickrun_configs")
+    let g:quickrun_configs = {
+                \ "cpp": ["!g++ -g \"%\"", "lldb ./a.out"],
+                \ "c": ["!g++ -g \"%\"", "./a.out"],
+                \ "php": ["!php \"%\""],
+                \ "vim": ["source \"%\""],
+                \ "py": ["!python \"%\""],
+                \ "git": ["!git add.", "git commit -am "%"", "git push origin master"],
+                \ "md": ["MarkdownPreview github"],
+                \ "tex": ["!latexmk -pvc \"%\""]
+                \ }
 endif
 
-function! QuickRun()
-    let file_type = expand("%:e")
-    if !empty(file_type)
-        " echo file_type
-        if has_key(g:quickrun_configs, file_type)
-            let qr_command = join(g:quickrun_configs[file_type], '&&')
-            execute qr_command
+function! s:GetQuickRunCommand(async, ...)
+    if a:0 < 1
+        let file_type = expand("%:e")
+    else
+        let file_type = a:1
+    endif
+    if has_key(g:quickrun_configs, file_type)
+        let qr_command =  join(g:quickrun_configs[file_type], "&&")
+        if a:async && qr_command[0] == "!"
+            return qr_command[1:]
+        else
+            return qr_command
         endif
     endif
 endfunction
 
-function! QuickRunWithType(args1)
-    let file_type = a:args1
-    " echo file_type
-    if has_key(g:quickrun_known_file_types, file_type)
-        let qr_command = join(g:quickrun_known_file_types[file_type], '&&')
-        execute qr_command
-    endif
-endfunction
-
-if !exists(':QuickRun')
-    command -nargs=0 QuickRun :call QuickRun()
+if !exists(":QuickRun")
+    command -nargs=? QuickRun execute s:GetQuickRunCommand(0, <f-args>)
 endif
 
-if !exists(':QuickRunWithType')
-    command -nargs=1 QuickRunWithType :call QuickRunWithType(<f-args>)
+if !exists(":QuickRunAsync") && exists(":AsyncRun")
+    command -nargs=? QuickRunAsync execute ':AsyncRun ' . s:GetQuickRunCommand(1, <f-args>)
 endif
