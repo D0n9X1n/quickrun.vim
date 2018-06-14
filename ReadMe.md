@@ -16,7 +16,7 @@ Take Vundle as an example:
 ### Config
 In this plugin, the default run config has been set as following:
 ```
-let g:quickrun_known_file_types = {
+let g:quickrun_configs = {
         \"cpp": ["!g++ %", "./a.out"],
         \"c": ["!gcc %", "./a.out"],
         \"php": ["!php %"],
@@ -30,7 +30,7 @@ These configuration means, when you edit a file with ".cpp". You will use `!g++ 
 So, you can add your customize configuration here. If you want to use `:go test` command when you edit go files. You can add your config like this:
 
 ```
-let g:quickrun_known_file_types = {
+let g:quickrun_configs = {
         \"cpp": ["!g++ %", "./a.out"],
         \"c": ["!gcc %", "./a.out"],
         \"php": ["!php %"],
@@ -50,10 +50,16 @@ This configuration you can write in your **vimrc file**.
 > + If you are editting *main.c* file, the command will be `:!gcc main.c && ./a.out`.
 
 2. Run with spec filetype.
-> + When you editing your file, you can run `:QuickRunWithType go` to run your current file.
+> + When you editing your file, you can run `:QuickRun go` to run your current file.
 > + If you are editting *main.md*, the command will be `:!go test` to test the whole go project.
 
 3. You can bind your key with `nnoremap <F5> :QuickRun<cr>` to enjoy the plugin.
+
+### Optional
+
+If you installed another plugin [asyncrun](https://github.com/skywind3000/asyncrun.vim), then you can also use `:QuickRunAsync` without changing any configs.
+
+Notice that `:QuickRunAsync` will invode `:AsyncRun` for you, it is **only** used for outter command such as `!python foo.py`.
 
 ### License
 See [@LICENSE](./LICENSE)
