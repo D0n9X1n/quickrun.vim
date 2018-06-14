@@ -19,12 +19,10 @@ endif
 
 function! QuickRun()
     let file_type = expand("%:e")
-    if !empty(file_type)
-        " echo file_type
-        if has_key(g:quickrun_configs, file_type)
-            let qr_command = join(g:quickrun_configs[file_type], '&&')
-            execute qr_command
-        endif
+    " echo file_type
+    if has_key(g:quickrun_known_file_types, file_type)
+        let qr_command = join(g:quickrun_known_file_types[file_type], '&&')
+        execute qr_command
     endif
 endfunction
 
