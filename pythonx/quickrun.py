@@ -6,15 +6,22 @@ import os
 import platform
 import vim
 
+
+def letVimRunCommand(command):
+    try:
+        vim.command(command);
+    except (KeyboardInterrupt, Exception):
+        # do nothing
+        return;
+
 def findConfigFile(configFileName):
     currentPath = os.getcwd();
     configFilePath = os.path.join(currentPath, configFileName);
 
     if (os.path.exists(configFilePath)):
-        vim.command("let g:hasConfigFile = 1")
+        letVimRunCommand("let g:hasConfigFile = 1")
     else:
-        vim.command("let g:hasConfigFile = 0")
-
+        letVimRunCommand("let g:hasConfigFile = 0")
 
 def runWithConfigFile(configFileName):
     currentPath = os.getcwd();
@@ -27,5 +34,4 @@ def runWithConfigFile(configFileName):
     command = "!" + reader.read();
     reader.close();
 
-    vim.command(command);
-
+    letVimRunCommand(command)
