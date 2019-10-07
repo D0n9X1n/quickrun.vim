@@ -44,6 +44,17 @@ Here we use `%` to represent the file you currently edit.
 
 This configuration you can write in your **vimrc file**.
 
+### Config with config file
+You can add `.quickrun` file into your project folder and write your shell there. The plugin will find that file and run commands there.
+
+For example, you can write the following commands in `.quickrun`
+
+```
+hexo clean && hexo generate && hexo server
+```
+
+Then, run `QuickRun`, you will run the command in your vim.
+
 ### Usage
 1. Auto detect the filetype.
 > + When you editing your file, You can run `:QuickRun` to run your current file.
